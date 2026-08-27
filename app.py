@@ -1,6 +1,10 @@
 
 import streamlit as st
 
+# Inject custom st.space helper to resolve AttributeError in screen layouts
+# Force reload trigger: 2
+st.space = lambda: st.html("<div style='margin-bottom: 1.5rem;'></div>")
+
 from src.screens.home_screen import home_screen
 from src.screens.teacher_screen import teacher_screen
 from src.screens.student_screen import student_screen

@@ -2,111 +2,142 @@ import streamlit as st
 
 
 
+import streamlit as st
+
+
 def style_background_home():
-
-    st.markdown("""
+    st.html("""
         <style>
-
-                .stApp {
+                .stApp, [data-testid="stAppViewContainer"] {
                     background: #5865F2 !important;
                 }
 
-                .stApp div[data-testid="stColumn"]{
-                    background-color:#E0E3FF !important;
-                    padding:2.5rem !important;
+                div[data-testid="column"], div[data-testid="stColumn"] {
+                    background-color: #E0E3FF !important;
+                    padding: 2.5rem !important;
                     border-radius: 5rem !important;
-                    }
-        </style>  
-
-                """
-            ,unsafe_allow_html=True)
-    
-
-def style_background_dashboard():
-
-    st.markdown("""
-        <style>
-
-                .stApp {
-                    background: #E0E3FF !important;
                 }
 
+                div[data-testid="column"] [data-testid="stVerticalBlock"], 
+                div[data-testid="stColumn"] [data-testid="stVerticalBlock"] {
+                    display: flex !important;
+                    flex-direction: column !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    text-align: center !important;
+                }
+
+                div[data-testid="column"] [data-testid="stButton"], 
+                div[data-testid="stColumn"] [data-testid="stButton"] {
+                    text-align: center !important;
+                    display: flex !important;
+                    justify-content: center !important;
+                }
+                
+                /* Center the image element inside the column container */
+                div[data-testid="column"] img, div[data-testid="stColumn"] img {
+                    margin: 0 auto !important;
+                    display: block !important;
+                }
         </style>  
+    """)
 
-                """
-            ,unsafe_allow_html=True)
-    
 
-    
+def style_background_dashboard():
+    st.html("""
+        <style>
+                .stApp, [data-testid="stAppViewContainer"] {
+                    background: #E0E3FF !important;
+                }
+        </style>  
+    """)
+
 
 def style_base_layout():
-# asdasd
-    st.markdown("""
+    st.html("""
         <style>
-        @import url('https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
-                
-         /* Hide Top Bar of streamlit */
-                
-            #MainMenu, footer, header {
-                visibility: hidden;
+         /* Hide Top Bar and Footer of streamlit */
+            #MainMenu, footer, header, [data-testid="stHeader"], [data-testid="stFooter"] {
+                visibility: hidden !important;
+                height: 0px !important;
+                padding: 0 !important;
             }
                 
             .block-container {
-                padding-top:1.5rem !important;    
+                padding-top: 1.5rem !important;    
+            }
+
+            /* Set global fonts */
+            body, input, select, textarea, label, button, 
+            [data-testid="stMarkdownContainer"] p, 
+            .stWidgetLabel, [data-testid="stWidgetLabel"] {
+                font-family: 'Outfit', sans-serif !important;
             }
 
             h1 {
                 font-family: 'Climate Crisis', sans-serif !important;
                 font-size: 3.5rem !important;
-                line-height:1.1 1important;
-                margin-bottom:0rem !important;
+                line-height: 1.1 !important;
+                margin-bottom: 0rem !important;
             }
-                
 
             h2 {
                 font-family: 'Climate Crisis', sans-serif !important;
                 font-size: 2rem !important;
-                line-height:0.9 !important;
-                margin-bottom:0rem !important;
+                line-height: 0.9 !important;
+                margin-bottom: 0rem !important;
             }
                 
             h3, h4, p {
-                font-family: 'Outfit', sans-serif;    
+                font-family: 'Outfit', sans-serif !important;    
             }
-                
 
-            button{
+            /* Premium Button Styling */
+            div[data-testid="stButton"] button, button {
+                font-family: 'Outfit', sans-serif !important;
+                font-size: 1.1rem !important;
+                font-weight: 600 !important;
                 border-radius: 1.5rem !important;
                 background-color: #5865F2 !important;
                 color: white !important;
-                padding: 10px 20px !important;
+                padding: 10px 24px !important;
                 border: none !important;
-                transition: transform 0.25s ease-in-out !important;
-                }
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+                transition: all 0.25s ease-in-out !important;
+            }
 
-            button[kind="secondary"]{
+            div[data-testid="stButton"] button[kind="secondary"], button[kind="secondary"] {
+                font-family: 'Outfit', sans-serif !important;
+                font-size: 1.1rem !important;
+                font-weight: 600 !important;
                 border-radius: 1.5rem !important;
                 background-color: #EB459E !important;
                 color: white !important;
-                padding: 10px 20px !important;
+                padding: 10px 24px !important;
                 border: none !important;
-                transition: transform 0.25s ease-in-out !important;
-                }
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+                transition: all 0.25s ease-in-out !important;
+            }
 
-            button[kind="tertiary"]{
+            div[data-testid="stButton"] button[kind="tertiary"], button[kind="tertiary"] {
+                font-family: 'Outfit', sans-serif !important;
+                font-size: 1.1rem !important;
+                font-weight: 600 !important;
                 border-radius: 1.5rem !important;
                 background-color: black !important;
                 color: white !important;
-                padding: 10px 20px !important;
+                padding: 10px 24px !important;
                 border: none !important;
-                transition: transform 0.25s ease-in-out !important;
-                }
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+                transition: all 0.25s ease-in-out !important;
+            }
 
-            button:hover{
-                transform :scale(1.05)}
+            div[data-testid="stButton"] button:hover, button:hover {
+                transform: scale(1.05) !important;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+            }
         </style>  
-
-                """
-            ,unsafe_allow_html=True)
+    """)
